@@ -1,0 +1,28 @@
+// Problem: Sum of Digits
+// Platform: GeeksforGeeks
+// Approach: Extract each digit using modulus and divide
+// Time Complexity: O(d)  (where d = number of digits)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int sumOfDigits(int n) {
+        int ans = 0;
+        while(n){
+            ans += n%10;
+            n /= 10;
+        }
+        return ans;
+    }
+};
+
+int main() {
+    Solution obj;
+    int n;
+    cin >> n;
+    cout << obj.sumOfDigits(n);
+    return 0;
+}
