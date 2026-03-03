@@ -1,6 +1,6 @@
 // Problem: Sum of Digits
 // Platform: GeeksforGeeks
-// Approach: Extract each digit using modulus and divide
+// Approach: Extract each digit using modulus and division
 // Time Complexity: O(d)  (where d = number of digits)
 // Space Complexity: O(1)
 
@@ -18,11 +18,3 @@ class Solution {
         return ans;
     }
 };
-
-int main() {
-    Solution obj;
-    int n;
-    cin >> n;
-    cout << obj.sumOfDigits(n);
-    return 0;
-}
