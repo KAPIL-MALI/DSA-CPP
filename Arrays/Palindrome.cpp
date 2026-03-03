@@ -1,9 +1,12 @@
 
 // Problem: Palindrome Number
 // Platform: GeeksforGeeks
-// Approach: Reverse the number and compare with original
+// Approach 1: Reverse the number and compare with original
+// Approach 2: Converting number into the string 
+// Approach 3: Doing the same work using a function ✅ (Implemented below)
 // Time Complexity: O(d)  (where d = number of digits)
 // Space Complexity: O(1)
+
 
 #include <bits/stdc++.h>
 using namespace std;
