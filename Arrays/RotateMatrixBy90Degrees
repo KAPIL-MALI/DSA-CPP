@@ -1,0 +1,38 @@
+// Problem: Rotate by 90 Degree
+// Platform: GeeksforGeeks
+// Difficulty: Medium
+// Approach1: Brute Force -> Temporary Matrix, Problem -> Space qualityO(n)
+// Approach2: Transpose the matrix, then reverse each row to achieve 90° clockwise rotation
+// Time Complexity: O(n^2)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    void rotate(vector<vector<int>>& mat) {
+    
+        int row = mat.size();
+        int col = mat[0].size();
+
+        // Step 1: Transpose the matrix
+        for(int i = 0; i < row; i++){
+            for(int j = i + 1; j < col; j++){
+                swap(mat[i][j], mat[j][i]);
+            }
+        }
+
+        // Step 2: Reverse each row
+        for(int i = 0; i < row; i++){
+            int left = 0;
+            int right = col - 1;
+
+            while(left < right){
+                swap(mat[i][left], mat[i][right]);
+                left++;
+                right--;
+            }
+        }
+    }
+};
