@@ -1,7 +1,7 @@
 // Problem: Rotate by 90 Degree (Anti-Clockwise)
 // Platform: GeeksforGeeks
 // Difficulty: Medium
-// Approach1: 
+// Approach1: Brute Force -> Temporary Matrix, Problem -> Space qualityO(n)
 // Approach2: First transpose the matrix, then reverse each column.
 // Transposing swaps rows and columns. Reversing each column results
 // in a 90° anti-clockwise rotation of the matrix.
