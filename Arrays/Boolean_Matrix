@@ -1,6 +1,6 @@
 // Problem: Boolean Matrix
 // Platform: GeeksforGeeks
-// Approach1: stack way of doing things
+// Approach1: stack way 
 // Approach2: Use first row and column as markers (Space Optimized)
 
 class Solution {
