@@ -1,0 +1,16 @@
+// Problem: Repeated Sum of Digits (Digital Root)
+// Platform: GeeksforGeeks
+// Approach1: % and / Property ,Time Complexity = O(logn), Space Complexity = O(1)
+// Approach2: Mathematical digital root property(Modulo 9 Property)
+// Time Complexity: O(1)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int repeatedSumOfDigits(int N) {
+        return (N % 9 == 0) ? 9 : (N % 9);
+    }
+};
