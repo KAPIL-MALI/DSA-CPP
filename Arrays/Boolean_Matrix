@@ -1,7 +1,7 @@
 // Problem: Boolean Matrix
 // Platform: GeeksforGeeks
 // Approach1: stack way , Time Complexity O(n*m), Space Complexity O(n*m)
-// Approach2: Use first row and column as markers  Time Complexity O(n*m), Space Complexity O(1)
+// Approach2: Use first row and column as markers , Time Complexity O(n*m), Space Complexity O(1)
 
 class Solution {
   public:
