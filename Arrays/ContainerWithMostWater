@@ -1,0 +1,32 @@
+// Problem: Container With Most Water
+// Platform: GeeksforGeeks / LeetCode
+// Approach1: two for loops used in which count was doing the work of finding distance which did not worked , Time Complexity: O(n^2), Space Complexity: O(1)
+// Approach2: Two Pointer Technique(written below)
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int maxWater(vector<int> &arr) {
+        int left = 0;
+        int right = arr.size() - 1;
+        int ans = 0;
+
+        while(left < right){
+            int height = min(arr[left], arr[right]);
+            int width = right - left;
+
+            ans = max(ans, height * width);
+
+            if(arr[left] < arr[right])
+                left++;
+            else
+                right--;
+        }
+
+        return ans;
+    }
+};
