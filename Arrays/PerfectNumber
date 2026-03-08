@@ -1,0 +1,25 @@
+// Problem: Perfect Numbers
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach: Iterate till sqrt(n) and add both divisors when a factor is found
+// Time Complexity: O(sqrt(n))
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    bool isPerfect(int n) {
+        int sum = 1;
+
+        for(int i = 2; i * i <= n; i++){
+            if(n % i == 0){
+                sum += i;
+                sum += n / i;
+            }
+        }
+
+        return sum == n;
+    }
+};
