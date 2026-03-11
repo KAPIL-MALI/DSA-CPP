@@ -1,7 +1,7 @@
 // Problem: Reverse String
 // Platform: GeeksforGeeks
 // Approach1 : reverse STL function 
-// Approach: Two-pointer technique (swap characters from start and end)
+// Approach2: Two-pointer technique (swap characters from start and end)
 // For both Apporaches => Time Complexity: O(n), Space Complexity: O(1)
 
 #include <bits/stdc++.h>
