@@ -1,0 +1,29 @@
+// Problem: Palindrome String
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach 1: using extra space
+// Approach 2: Two-pointer technique comparing characters from start and end
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    bool isPalindrome(string& s) {
+        int start = 0, end = s.size() - 1;
+
+        while(start <= end){
+            if(s[start] == s[end]){
+                start++;
+                end--;
+            }
+            else{
+                return false;
+            }
+        }
+
+        return true;
+    }
+};
