@@ -1,0 +1,34 @@
+// Problem: Sorted Array Search
+// Platform: GeeksforGeeks
+// Difficulty: Basic
+// Approach 1: Brute Force traversing all array for searching the target.
+// Approach 2: STL binary search 
+// Approach 3: Binary Search on a sorted array
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    bool searchInSorted(vector<int>& arr, int k) {
+        int start = 0, end = arr.size() - 1;
+        
+        while(start <= end){
+            int mid = start + (end - start) / 2;
+            
+            if(arr[mid] == 0){
+                return true;
+            }
+            else if(arr[mid] > k){
+                end = mid - 1;
+            }
+            else{
+                start = mid + 1;
+            }
+        }
+        
+        return false;
+    }
+};
