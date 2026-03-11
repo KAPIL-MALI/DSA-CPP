@@ -1,0 +1,22 @@
+// Problem: Reverse String
+// Platform: GeeksforGeeks
+// Approach1 : reverse STL function 
+// Approach: Two-pointer technique (swap characters from start and end)
+// For both Apporaches => Time Complexity: O(n), Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    string reverseString(string& s) {
+        int start = 0, end = s.size() - 1;
+
+        while(start < end){
+            swap(s[start], s[end]);
+            start++, end--;
+        }
+
+        return s;
+    }
+};
