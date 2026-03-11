@@ -1,0 +1,32 @@
+// Problem: Merge Two Strings
+// Platform: GeeksforGeeks
+// Difficulty: Basic
+// Approach 1: Push using first and secfirst and then put the remaining values using while loops for each string.
+// Approach: Traverse both strings simultaneously and append characters alternately (written below).
+// Time Complexity: O(|S1| + |S2|)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    string merge(string S1, string S2) {
+        
+        int n = S1.size(), m = S2.size();
+        string ans = "";
+        
+        int maxLen = max(n, m);
+        
+        for(int i = 0; i < maxLen; i++){
+            
+            if(i < n)
+                ans += S1[i];
+                
+            if(i < m)
+                ans += S2[i];
+        }
+        
+        return ans;
+    }
+};
