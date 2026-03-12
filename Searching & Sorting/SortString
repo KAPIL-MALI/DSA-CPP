@@ -1,0 +1,30 @@
+// Problem: Sort a String
+// Platform: GeeksforGeeks
+// Difficulty: Basic
+// Approach 1: STL Sort, Time Complexity = O(nlogn), Space Complexity = O(1).
+// Approach 2: Counting sort using frequency array of size 26
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    string sort(string s) {
+        
+        int freq[26] = {0};
+
+        for(int i = 0; i < s.size(); i++)
+            freq[s[i]-'a']++;
+
+        string ans = "";
+
+        for(int i = 0; i < 26; i++){
+            while(freq[i]--)
+                ans += (i + 'a');
+        }
+
+        return ans;
+    }
+};
