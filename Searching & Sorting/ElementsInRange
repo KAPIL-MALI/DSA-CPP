@@ -1,0 +1,34 @@
+// Problem: Elements in the Range
+// Platform: GeeksforGeeks
+// Difficulty: Basic
+// Approach 1: Better Code sort function is used then make duplicates 0, and compare the realtotal and ourtotal, Time Complexity = O(nlogn), Space Complexity = O(1).
+// Approach 2: Use index marking technique by converting elements to negative
+// Time Complexity: O(N)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    bool check_elements(int arr[], int n, int A, int B) {
+        
+        for(int i = 0; i < n; i++){
+            int val = abs(arr[i]);
+            
+            if(val >= A && val <= B){
+                int index = val - A;
+                
+                if(index < n)
+                    arr[index] = -abs(arr[index]);
+            }
+        }
+        
+        for(int i = 0; i <= B - A; i++){
+            if(arr[i] > 0)
+                return false;
+        }
+        
+        return true;
+    }
+};
