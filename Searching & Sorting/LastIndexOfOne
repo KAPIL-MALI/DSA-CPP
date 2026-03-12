@@ -1,0 +1,24 @@
+// Problem: Last Index of One
+// Platform: GeeksforGeeks
+// Difficulty: Basic
+// Approach: Traverse the string from the end and return the first index where '1' is found
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int lastIndex(string s) {
+        
+        for(int i = s.size() - 1; i > -1; i--){
+            if(s[i] == '1'){
+                return i;
+                break;
+            }
+        }
+        
+        return -1;
+    }
+};
