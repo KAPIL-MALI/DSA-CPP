@@ -1,0 +1,46 @@
+// Problem: Bitonic Point
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach 1: sort and return the last element, Time Complexity = O(nlogn), Space Complexity = O(1).
+// Approach 2: find the maximum value using a single for loop, Time Complexity = O(n), Space Complexity = O(1).
+// Approach 3: Binary Search to find the peak element in a bitonic array
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int findMaximum(vector<int> &arr) {
+        int start = 0, end = arr.size() - 1;
+        
+        while(start <= end){
+            int mid = start + (end - start) / 2;
+            
+            if(mid > 0 && mid < arr.size()-1){
+                
+                if(arr[mid] > arr[mid-1] && arr[mid] > arr[mid+1])
+                    return arr[mid];
+                
+                else if(arr[mid] > arr[mid-1])
+                    start = mid + 1;
+                
+                else
+                    end = mid - 1;
+            }
+            
+            else if(mid == 0){
+                if(arr[0] > arr[1]) return arr[0];
+                else return arr[1];
+            }
+            
+            else if(mid == arr.size()-1){
+                if(arr[mid] > arr[mid-1]) return arr[mid];
+                else return arr[mid-1];
+            }
+        }
+        
+        return -1;
+    }
+};
