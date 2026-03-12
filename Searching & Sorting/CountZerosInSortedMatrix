@@ -1,0 +1,32 @@
+// Problem: Count Zeros in a Sorted Matrix
+// Platform: GeeksforGeeks
+// Difficulty: Basic
+// Approach 1: Brute Force of whole matrix traversal, Time Complexity = O(n^2), Space Complexity = O(1).
+// Approach 2: Start from bottom-left and move right/up based on value.
+// Time Complexity: O(N)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int countZeros(vector<vector<int>> A) {
+        int n = A.size();
+        int i = n - 1;
+        int j = 0;
+        int count = 0;
+
+        while(i >= 0 && j < n){
+            if(A[i][j] == 0){
+                count += (i + 1);
+                j++;
+            }
+            else{
+                i--;
+            }
+        }
+
+        return count;
+    }
+};
