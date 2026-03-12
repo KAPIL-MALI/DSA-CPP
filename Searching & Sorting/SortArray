@@ -1,0 +1,16 @@
+// Problem: Sort Array II
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach: Use STL sort() to arrange elements in ascending order
+// Time Complexity: O(n log n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    void sortArr(vector<int> &arr) {
+        sort(arr.begin(), arr.end());
+    }
+};
