@@ -1,0 +1,31 @@
+// Problem: Rope Cutting
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach 1: Brute Force => Time Complexity = O(n^2), Space Complexity = O(1).
+// Approach 2: Sort the ropes and count remaining ropes whenever the length changes
+// Time Complexity: O(n log n)
+// Space Complexity: O(1) (excluding output array)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    vector<int> RopeCutting(vector<int>& arr) {
+        
+        int n = arr.size();
+        vector<int> ans;
+
+        sort(arr.begin(), arr.end());
+
+        for(int i = 1; i < n; i++)
+        {
+            if(arr[i] != arr[i-1])
+            {
+                ans.push_back(n - i);
+            }
+        }
+
+        return ans;
+    }
+};
