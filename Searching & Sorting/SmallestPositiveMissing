@@ -1,0 +1,33 @@
+// Problem: Smallest Positive Missing
+// Platform: GeeksforGeeks
+// Difficulty: Medium
+// Approach 1: n2 approach new one written in copy, Time Complexity = O(nlogn), Space Complexity = O(n).
+// Approach 2: num == arr[i] then do num++  ,Time Complexity = O(nlogn), Space Complexity = O(1).
+// Approach 3: Cyclic Sort – place each number at its correct index (value v → index v-1)
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int missingNumber(vector<int> &arr) {
+        
+        int n = arr.size();
+        
+        for(int i = 0; i < n; i++){
+            
+            while(arr[i] > 0 && arr[i] <= n && arr[arr[i]-1] != arr[i]){
+                swap(arr[i], arr[arr[i]-1]);
+            }
+        }
+        
+        for(int i = 0; i < n; i++){
+            if(arr[i] != i+1)
+                return i+1;
+        }
+        
+        return n+1;
+    }
+};
