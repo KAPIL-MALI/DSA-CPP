@@ -1,0 +1,36 @@
+// Problem: Most Frequent Character
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach 1: Unordered_map, Time Complexity = O(n), Space Complexity = O(1).
+// Approach 2: Count frequency of each character using a fixed array of size 26.
+//           Then find the character with the maximum frequency.
+//           In case of a tie, the lexicographically smaller character is chosen.
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    char getMaxOccuringChar(string& s) {
+        
+        int freq[26] = {0};
+        
+        for(int i = 0; i < s.size(); i++){
+            freq[s[i] - 'a']++;
+        }
+        
+        int maxi = 0;
+        char ans = 'a';
+        
+        for(int i = 0; i < 26; i++){
+            if(freq[i] > maxi){
+                maxi = freq[i];
+                ans = i + 'a';
+            }
+        }
+        
+        return ans;
+    }
+};
