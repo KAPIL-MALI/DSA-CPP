@@ -1,0 +1,43 @@
+// Problem: Sort a Stack
+// Platform: GeeksforGeeks
+// Difficulty: Medium
+// Approach 1: Vector then sort then push to given stack again => Time Complexity = O(nlogn), Space Complexity = O(n).
+// Approach 2: Another Stack Time Complexity = O(n^2), Space Complexity = O(n).
+// Approach: Recursive approach.
+//           1. Pop the top element.
+//           2. Recursively sort the remaining stack.
+//           3. Insert the popped element back in sorted order using recursion.
+// Time Complexity: O(n^2)
+// Space Complexity: O(n) (due to recursion stack)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    
+    void insertSorted(stack<int> &st, int x){
+        if(st.empty() || st.top() <= x){
+            st.push(x);
+            return;
+        }
+        
+        int temp = st.top();
+        st.pop();
+        
+        insertSorted(st, x);
+        
+        st.push(temp);
+    }
+    
+    void sortStack(stack<int> &st) {
+        if(st.empty()) return;
+        
+        int x = st.top();
+        st.pop();
+        
+        sortStack(st);
+        
+        insertSorted(st, x);
+    }
+};
