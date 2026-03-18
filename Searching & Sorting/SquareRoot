@@ -1,0 +1,35 @@
+// Problem: Square Root
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach 1: Brute Force , Time Complexity = rootn, Space Complexity = O(1).
+// Approach 2: Binary Search to find the largest number whose square is <= n
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int floorSqrt(int n) {
+        
+        int first = 1, last = n, ans = 1;
+        
+        while(first <= last){
+            int mid = first + (last - first) / 2;
+            
+            if(mid * mid == n){
+                return mid;
+            }
+            else if(mid * mid > n){
+                last = mid - 1;
+            }
+            else{
+                ans = mid;
+                first = mid + 1;
+            }
+        }
+        
+        return ans;
+    }
+};
