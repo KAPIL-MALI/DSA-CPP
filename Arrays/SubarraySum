@@ -1,0 +1,34 @@
+// Problem: Indexes of Subarray Sum
+// Platform: GeeksforGeeks
+// Difficulty: Medium
+// Approach 1: Brute Force (written by me), Time Complexity = O(n^2), Space Complexity = O(1);
+// Approach 2: Sliding Window (Two Pointers) since array contains non-negative integers.
+//           Expand window by adding elements and shrink when sum exceeds target.
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    vector<int> subarraySum(vector<int> &arr, int target) {
+        int n = arr.size();
+        int i = 0, sum = 0;
+        
+        for(int j = 0; j < n; j++){
+            sum += arr[j];
+            
+            while(sum > target){
+                sum -= arr[i];
+                i++;
+            }
+            
+            if(sum == target){
+                return {i+1, j+1};
+            }
+        }
+        
+        return {-1};
+    }
+};
