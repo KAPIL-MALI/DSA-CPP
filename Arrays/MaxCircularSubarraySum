@@ -1,0 +1,40 @@
+// Problem: Max Circular Subarray Sum
+// Platform: GeeksforGeeks
+// Difficulty: Hard
+// Approach 1: Brute Force yours, Time Complexity = O(n^2), Space Complexity = O(n)
+// Approach 2: Use Kadane's Algorithm for:
+//           1. Maximum subarray sum (normal case)
+//           2. Minimum subarray sum (to handle circular case)
+//           Result = max(maxSum, totalSum - minSum)
+//           Handle edge case when all elements are negative
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int maxCircularSum(vector<int> &arr) {
+        int n = arr.size();
+        
+        int total = 0;
+        int maxSum = arr[0], currMax = 0;
+        int minSum = arr[0], currMin = 0;
+        
+        for(int i = 0; i < n; i++){
+            total += arr[i];
+            
+            currMax = max(arr[i], currMax + arr[i]);
+            maxSum = max(maxSum, currMax);
+            
+            currMin = min(arr[i], currMin + arr[i]);
+            minSum = min(minSum, currMin);
+        }
+        
+        // Edge case: all elements are negative
+        if(maxSum < 0) return maxSum;
+        
+        return max(maxSum, total - minSum);
+    }
+};
