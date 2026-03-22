@@ -1,0 +1,38 @@
+// Problem: Count the Number of Subarrays
+// Platform: GeeksforGeeks
+// Difficulty: Hard
+// Approach: 
+// Use sliding window to count subarrays with sum <= K.
+// Then use inclusion-exclusion:
+// count(L ≤ sum ≤ R) = count(sum ≤ R) - count(sum ≤ L-1)
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+  
+    long long countAtMost(vector<int>& A, long long K) {
+        long long sum = 0, count = 0;
+        int left = 0;
+        
+        for(int right = 0; right < A.size(); right++) {
+            sum += A[right];
+            
+            while(sum > K) {
+                sum -= A[left];
+                left++;
+            }
+            
+            count += (right - left + 1);
+        }
+        
+        return count;
+    }
+  
+    long long countSubarray(int N, vector<int> A, long long L, long long R) {
+        return countAtMost(A, R) - countAtMost(A, L - 1);
+    }
+};
