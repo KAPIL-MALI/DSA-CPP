@@ -1,0 +1,30 @@
+// Problem: Two Repeated Elements
+// Platform: GeeksforGeeks
+// Difficulty: Medium
+// Approach 1: Brute Force of unoredered_map, Time Complexity = O(n), Space Complexity = O(n).
+// Approach 2: Use index marking (negative marking) to detect duplicates
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    vector<int> twoRepeated(vector<int>& arr) {
+        vector<int> ans;
+        
+        for(int i = 0; i < arr.size(); i++){
+            int index = abs(arr[i]) - 1;
+            
+            if(arr[index] < 0){
+                ans.push_back(abs(arr[i]));
+            } 
+            else {
+                arr[index] = -arr[index];
+            }
+        }
+        
+        return ans;
+    }
+};
