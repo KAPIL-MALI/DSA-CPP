@@ -1,7 +1,9 @@
 // Problem: More than n/k Occurrences
 // Platform: GeeksforGeeks
 // Difficulty: Easy
-// Approach: Use hashmap to count frequency of each element and check if it exceeds n/k
+// Approach 1: Brute Force, Time Complexity = O(n^2), Space Complexity = O(1),
+// Approach 2: Better Approach, sort one , Time Complexity = O(nlogn), Space Complexity = O(1),
+// Approach 3: Use hashmap to count frequency of each element and check if it exceeds n/k
 // Time Complexity: O(n)
 // Space Complexity: O(n)
 
