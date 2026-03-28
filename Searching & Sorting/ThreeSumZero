@@ -1,0 +1,43 @@
+// Problem: Find Triplets with Zero Sum
+// Platform: GeeksforGeeks
+// Difficulty: Medium
+// Approach 1: Brute Force, Time Complexity = O(n^3), Space Complexity = O(1)
+// Approach 2: Sort the array and use two-pointer technique for each element
+// Time Complexity: O(n^2)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    bool findTriplets(vector<int> &arr) {
+        
+        sort(arr.begin(), arr.end());
+        int n = arr.size();
+        
+        if(n < 3)
+            return false;
+        
+        for(int i = 0; i < n - 2; i++){
+            
+            int start = i + 1, end = n - 1;
+            
+            while(start < end){
+                int sum = arr[i] + arr[start] + arr[end];
+                
+                if(sum == 0){
+                    return true;
+                }
+                else if(sum < 0){
+                    start++;
+                }
+                else{
+                    end--;
+                }
+            }
+        }
+        
+        return false;
+    }
+};
