@@ -1,0 +1,40 @@
+// Problem: Parenthesis Checker
+// Platform: GeeksforGeeks
+// Approach: Use stack to match opening and closing brackets
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    bool isBalanced(string& s) {
+        
+        stack<char> st;
+        int n = s.size();
+        
+        for(int i = 0; i < n; i++){
+            char ch = s[i];
+            
+            // opening brackets
+            if(ch == '(' || ch == '{' || ch == '['){
+                st.push(ch);
+            }
+            else{
+                if(st.empty()) return false;
+                
+                char top = st.top();
+                st.pop();
+                
+                if((ch == ')' && top != '(') ||
+                   (ch == '}' && top != '{') ||
+                   (ch == ']' && top != '[')){
+                    return false;
+                }
+            }
+        }
+        
+        return st.empty();
+    }
+};
