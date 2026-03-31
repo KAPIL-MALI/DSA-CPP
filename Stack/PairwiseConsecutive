@@ -1,0 +1,47 @@
+// Problem: Pairwise Consecutive Elements in Stack
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach: Check elements in pairs and verify if their difference is ±1
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function should return true/false or 1/0
+bool pairWiseConsecutive(stack<int> s) {
+    
+    int n = s.size();
+    
+    if(n % 2 == 0){
+        while(!s.empty()){
+            int first = s.top();
+            s.pop();
+            
+            if(first - s.top() == 1 || first - s.top() == -1){
+                s.pop();
+            }
+            else{
+                return 0;
+            }
+        }
+        return 1;
+    }
+    
+    if(n % 2 != 0){
+        s.pop();
+        
+        while(!s.empty()){
+            int second = s.top();
+            s.pop();
+            
+            if(second - s.top() == 1 || second - s.top() == -1){
+                s.pop();
+            }
+            else{
+                return 0;
+            }
+        }
+        return 1;
+    }
+}
