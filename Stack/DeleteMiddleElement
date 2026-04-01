@@ -1,0 +1,35 @@
+// Problem: Delete Mid of a Stack
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach 1: Seperately done for even and odd, Time Complexity: O(n), Space Complexity: O(n)
+// Approach 2: Use recursion to remove the k-th element from top (middle element)
+// Time Complexity: O(n)
+// Space Complexity: O(n) (due to recursion stack)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    
+    void solve(stack<int>& s, int k){
+        if(k == 1){
+            s.pop();
+            return;
+        }
+        
+        int temp = s.top();
+        s.pop();
+        
+        solve(s, k - 1);
+        
+        s.push(temp);
+    }
+    
+    void deleteMid(stack<int>& s) {
+        int n = s.size();
+        int k = (n / 2) + 1;
+        
+        solve(s, k);
+    }
+};
