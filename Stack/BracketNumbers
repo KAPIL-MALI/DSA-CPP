@@ -1,0 +1,36 @@
+// Problem: Print Bracket Number
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach: Use a stack to track opening bracket numbers and assign matching numbers to closing brackets
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+
+    vector<int> bracketNumbers(string str) {
+        
+        int count = 0, n = str.size();
+        vector<int> ans;
+        stack<int> st;
+        
+        for(int i = 0; i < n; i++){
+            
+            if(str[i] == '('){
+                count++;
+                st.push(count);
+                ans.push_back(count);
+            }
+            
+            if(str[i] == ')'){
+                ans.push_back(st.top());
+                st.pop();
+            }
+        }
+        
+        return ans;
+    }
+};
