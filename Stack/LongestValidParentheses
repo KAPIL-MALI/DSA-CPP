@@ -1,0 +1,48 @@
+// Problem: Longest Valid Parentheses (IPL 2021 - Final)
+// Platform: GeeksforGeeks
+// Difficulty: Hard
+// Approach 1: Stack, // Time Complexity: O(n), Space Complexity: O(n)
+// Approach 2: Two-pass traversal (left-to-right and right-to-left) counting '(' and ')'
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int findMaxLen(string s) {
+        
+        int left = 0, right = 0, ans = 0;
+        
+        // Left to right pass
+        for(int i = 0; i < s.size(); i++){
+            if(s[i] == '(') left++;
+            else right++;
+            
+            if(left == right){
+                ans = max(ans, 2 * right);
+            }
+            else if(right > left){
+                left = right = 0;
+            }
+        }
+        
+        left = right = 0;
+        
+        // Right to left pass
+        for(int i = s.size() - 1; i >= 0; i--){
+            if(s[i] == '(') left++;
+            else right++;
+            
+            if(left == right){
+                ans = max(ans, 2 * left);
+            }
+            else if(left > right){
+                left = right = 0;
+            }
+        }
+        
+        return ans;
+    }
+};
