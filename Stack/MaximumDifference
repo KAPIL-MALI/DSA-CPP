@@ -1,0 +1,67 @@
+// Problem: Maximum Difference
+// Platform: GeeksforGeeks
+// Difficulty: Medium
+// Approach: Use stack to find nearest smaller elements on left and right
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int findMaxDiff(vector<int> &arr) {
+        int n = arr.size();
+        vector<int> leftsmaller(n);
+        vector<int> rightsmaller(n);
+        stack<int> st;
+        
+        // finding next smaller element on right side
+        for(int i = n - 1; i >= 0; i--){
+            
+            while(!st.empty() && st.top() >= arr[i]){
+                st.pop();
+            }
+            
+            if(st.empty()){
+                leftsmaller[i] = 0;
+            }
+            else{
+                leftsmaller[i] = st.top();
+            }
+            
+            st.push(arr[i]);
+        }
+        
+        while(!st.empty()){ 
+            st.pop();
+        }
+        
+        // finding next smaller element on left side 
+        for(int i = 0; i < n; i++){
+            
+            while(!st.empty() && st.top() >= arr[i]){ 
+                st.pop();
+            }
+            
+            if(st.empty()){
+                rightsmaller[i] = 0;
+            }
+            else{
+                rightsmaller[i] = st.top(); 
+            }
+            
+            st.push(arr[i]);
+        }
+        
+        int k = 0, i = 0;
+        
+        // finding the maximum difference
+        while(i < n){
+            k = max(k, abs(leftsmaller[i] - rightsmaller[i]));
+            i++;
+        }
+        
+        return k;
+    }
+};
