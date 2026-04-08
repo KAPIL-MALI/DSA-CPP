@@ -1,0 +1,35 @@
+// Problem: Two Sum
+// Platform: LeetCode
+// Difficulty: Easy
+// Approach 1: Brute Force, Time Complexity: O(n), Space Complexity: O(1)
+// Approach 2: Better like binary search, // Time Complexity: O(nlogn), Space Complexity: O(1)
+// Approach 3: Use a hashmap to store visited elements.
+//           For each element, check if (target - current element) exists.
+//           If yes, return indices.
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        
+        unordered_map<int, int> mp; // value -> index
+        
+        for(int i = 0; i < nums.size(); i++){
+            
+            int first = nums[i];
+            int second = target - first;
+            
+            if(mp.find(second) != mp.end()){
+                return {mp[second], i};
+            }
+            
+            mp[first] = i;
+        }
+        
+        return {};
+    }
+};
