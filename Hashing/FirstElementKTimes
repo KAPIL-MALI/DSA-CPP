@@ -1,0 +1,29 @@
+// Problem: At Least K Occurrences
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach 1: Brute Force, Time Complexity: O(n^2), Space Complexity: O(1)
+// Approach 2: Use HashMap to store frequency and return first element reaching k frequency
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int firstElementKTime(vector<int>& arr, int k) {
+        
+        unordered_map<int,int> m;
+        int size = arr.size();
+        
+        for(int i = 0; i < size; i++){
+            m[arr[i]]++;
+            
+            if(m[arr[i]] == k){
+                return arr[i];
+            }
+        }
+        
+        return -1;
+    }
+};
