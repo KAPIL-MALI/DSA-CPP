@@ -2,7 +2,7 @@
 // Platform: GeeksforGeeks
 // Difficulty: Basic
 // Approach 1: Brute Force, // Time Complexity: O(n^2), Space Complexity: O(1)
-// Approach: Count number of '1's and for each '1', add previously seen '1's
+// Approach 2: Count number of '1's and for each '1', add previously seen '1's
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 
