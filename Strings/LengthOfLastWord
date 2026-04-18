@@ -1,0 +1,28 @@
+// Problem: Length of Last Word
+// Platform: LeetCode
+// Difficulty: Easy
+// Approach 1: STL, // Time Complexity: O(n), Space Complexity: O(1)
+// Approach 2: Traverse from end, count characters of last word, ignore trailing spaces
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int n = s.size(), count = 0;
+
+        for(int i = n - 1; i >= 0; i--){
+            if((s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= 'a' && s[i] <= 'z')){
+                count++;
+            }
+            else if(s[i] == ' ' && count > 0){
+                break;
+            }
+        }
+
+        return count;
+    }
+}; 
