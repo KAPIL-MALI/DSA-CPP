@@ -1,0 +1,26 @@
+// Problem: Binary String (Count substrings starting and ending with 1)
+// Platform: GeeksforGeeks
+// Difficulty: Basic
+// Approach 1: Brute Force, // Time Complexity: O(n^2), Space Complexity: O(1)
+// Approach: Count number of '1's and for each '1', add previously seen '1's
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int binarySubstring(string& s) {
+        int count = 0, ones = 0;
+
+        for(char ch : s){
+            if(ch == '1'){
+                count += ones;
+                ones++;
+            }
+        }
+
+        return count;
+    }
+};
