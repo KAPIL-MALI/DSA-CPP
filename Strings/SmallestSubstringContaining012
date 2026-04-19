@@ -1,0 +1,40 @@
+// Problem: Smallest window containing 0, 1 and 2
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach: Sliding Window - expand window and shrink when all characters (0,1,2) are present
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    int smallestSubstring(string S) {
+        int n = S.size();
+        
+        int flag0 = 0, flag1 = 0, flag2 = 0;
+        int end = 0;
+        int ans = INT_MAX;
+        
+        for(int start = 0; start < n; start++){
+            
+            if(S[start] == '0') flag0++;
+            if(S[start] == '1') flag1++;
+            if(S[start] == '2') flag2++;
+            
+            // shrink window
+            while(flag0 > 0 && flag1 > 0 && flag2 > 0){
+                ans = min(ans, start - end + 1);
+                
+                if(S[end] == '0') flag0--;
+                else if(S[end] == '1') flag1--;
+                else flag2--;
+                
+                end++;
+            }
+        }
+        
+        return ans == INT_MAX ? -1 : ans;
+    }
+}; 
