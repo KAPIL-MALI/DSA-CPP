@@ -1,0 +1,51 @@
+// Problem: Queue Using Array
+// Platform: GeeksforGeeks
+// Difficulty: Basic
+// Approach: Use deque to simulate queue with size constraint
+// Time Complexity: O(1) for all operations
+// Space Complexity: O(n)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class myQueue {
+
+  public:
+    
+    int n;
+    deque<int> q;
+    
+    myQueue(int n) {
+        this->n = n;
+    }
+
+    bool isEmpty() {
+        return q.size() == 0;
+    }
+
+    bool isFull() {
+        return q.size() == n;
+    }
+
+    void enqueue(int x) {
+        if(q.size() == n){
+            return;
+        }
+        q.push_back(x);
+    }
+
+    void dequeue() {
+        if(q.size() == 0) return;
+        q.pop_front();
+    }
+
+    int getFront() {
+        if(q.size() == 0) return -1;
+        return q.front();
+    }
+
+    int getRear() {
+        if(q.size() == 0) return -1;
+        return q.back();
+    }
+};
