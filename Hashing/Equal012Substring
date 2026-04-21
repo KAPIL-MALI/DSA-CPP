@@ -1,0 +1,49 @@
+// Problem: Equal 0, 1 and 2
+// Platform: GeeksforGeeks
+// Difficulty: Medium
+// Approach 1: Brute Force, // Time Complexity: O(n^2), Space Complexity: O(1)
+// Approach 2: Use prefix difference (one-zero, two-one) and hashmap to count equal substrings
+// Time Complexity: O(n)
+// Space Complexity: O(n)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+
+    // Custom hash for pair
+    struct hash_pair {
+        size_t operator()(const pair<int,int>& p) const {
+            return hash<int>()(p.first) ^ hash<int>()(p.second);
+        }
+    };
+
+    long long getSubstringWithEqual012(string str) {
+        
+        unordered_map<pair<int,int>, int, hash_pair> mp;
+        
+        int zero = 0, one = 0, two = 0;
+        long long count = 0;
+        
+        mp[{0,0}] = 1;
+        
+        for(char ch : str){
+            
+            if(ch == '0') zero++;
+            else if(ch == '1') one++;
+            else two++;
+            
+            int d1 = one - zero;
+            int d2 = two - one;
+            
+            pair<int,int> key = {d1, d2};
+            
+            if(mp.count(key)) count += mp[key];
+            
+            mp[key]++;
+        }
+        
+        return count;
+    }
+};
