@@ -1,0 +1,41 @@
+// Problem: Reverse first K elements of a Queue
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach 1: Vector Split Method, Time Complexity: O(n),Space Complexity: O(n);
+// Approach 2: Use stack to reverse first k elements, then rotate remaining elements
+// Time Complexity: O(n)
+// Space Complexity: O(k)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    queue<int> reverseFirstK(queue<int> q, int k) {
+        
+        if(q.size() < k || k == 0) return q;
+        
+        stack<int> st;
+        
+        // Step 1: Push first k elements into stack
+        for(int i = 0; i < k; i++){
+            st.push(q.front());
+            q.pop();
+        }
+        
+        // Step 2: Push back from stack (reversed)
+        while(!st.empty()){
+            q.push(st.top());
+            st.pop();
+        }
+        
+        // Step 3: Move remaining elements to back
+        int rem = q.size() - k;
+        while(rem--){
+            q.push(q.front());
+            q.pop();
+        }
+        
+        return q;
+    }
+};
