@@ -1,0 +1,55 @@
+// Problem: Stack using Queue
+// Platform: GeeksforGeeks
+// Difficulty: Medium
+// Approach: Use single queue; rotate elements during pop/top to simulate stack behavior
+// Time Complexity: push: O(1), pop/top: O(n)
+// Space Complexity: O(n)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class myStack {
+    queue<int> q;
+
+  public:
+    int n = 0;
+
+    void push(int x) {
+        q.push(x);
+        n++;
+    }
+
+    void pop() {
+        if(q.size() == 0) return;
+
+        int sz = q.size();
+        for(int i = 0; i < sz - 1; i++){
+            int temp = q.front();
+            q.push(temp);
+            q.pop();
+        }
+        q.pop();
+        n--;
+    }
+
+    int top() {
+        if(q.size() == 0) return -1;
+
+        int sz = q.size();
+        for(int i = 0; i < sz - 1; i++){
+            int temp = q.front();
+            q.push(temp);
+            q.pop();
+        }
+
+        int res = q.front();
+        q.push(res);
+        q.pop();
+
+        return res;
+    }
+
+    int size() {
+        return n;
+    }
+};
