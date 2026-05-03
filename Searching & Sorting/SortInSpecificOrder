@@ -1,0 +1,37 @@
+// Problem: Sort in Specific Order
+// Platform: GeeksforGeeks
+// Difficulty: Medium
+// Approach:
+// 1. Sort the entire array.
+// 2. Partition the array so that all odd numbers come first.
+// 3. Sort odd part in descending order.
+// 4. Sort even part in ascending order.
+// Time Complexity: O(n log n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    void sortIt(vector<int>& arr) {
+        
+        sort(arr.begin(), arr.end());
+        int n = arr.size();
+        
+        int low = 0, curr = n - 1;
+        
+        while(low <= curr){
+            if(arr[curr] % 2 != 0){
+                swap(arr[low], arr[curr]);
+                low++;
+            }
+            else{
+                curr--;
+            }
+        }
+        
+        sort(arr.begin(), arr.begin() + low, greater<int>());
+        sort(arr.end() - (n - low), arr.end());
+    }
+};
