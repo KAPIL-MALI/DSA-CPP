@@ -1,0 +1,38 @@
+// Problem: Palindrome Binary
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach:
+// 1. Convert the number into its binary representation using string.
+// 2. Check if the string is a palindrome using two pointers.
+// Time Complexity: O(log n)
+// Space Complexity: O(log n)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    bool isBinaryPalindrome(int n) {
+        
+        string s = "";
+        
+        while(n){
+            int rem = n % 2;
+            s += rem;
+            n /= 2;
+        }
+        
+        int i = 0, j = s.size() - 1;
+        
+        while(i <= j){
+            if(s[i] == s[j]){
+                i++, j--;
+            }
+            else{
+                return 0;
+            }
+        }
+        
+        return 1;
+    }
+};
