@@ -1,0 +1,51 @@
+// Problem: Count Indices With Opposite Parity
+// Platform: LeetCode
+// Difficulty: Easy
+// Approach:
+// For every index, traverse elements on the right side
+// and count numbers having opposite parity.
+// Time Complexity: O(n^2)
+// Space Complexity: O(1) (excluding output array)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> countOppositeParity(vector<int>& nums) {
+        
+        int n = nums.size();
+        vector<int> ans(n, 0);
+
+        ans[n - 1] = 0;
+
+        for(int i = 0; i < n - 1; i++){
+            
+            int count = 0;
+
+            if(nums[i] % 2 != 0){
+                
+                for(int j = i + 1; j < n; j++){
+                    
+                    if(nums[j] % 2 == 0){
+                        count++;
+                        ans[i] = count;
+                    }
+                }
+            }
+
+            if(nums[i] % 2 == 0){
+                
+                for(int j = i + 1; j < n; j++){
+                    
+                    if(nums[j] % 2 != 0){
+                        count++;
+                        ans[i] = count;
+                    }
+                }
+            }
+        }
+
+        return ans;
+    }
+};
