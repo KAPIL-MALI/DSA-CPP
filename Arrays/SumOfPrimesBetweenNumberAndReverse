@@ -1,0 +1,55 @@
+// Problem: Sum of Primes Between Number and Its Reverse
+// Platform: LeetCode
+// Difficulty: Medium
+// Approach:
+// 1. Reverse the given number.
+// 2. Find the range [min(n, reverse), max(n, reverse)].
+// 3. Traverse the range and check for prime numbers.
+// 4. Add all prime numbers to the sum.
+// Time Complexity: O((r - n) * sqrt(max(n, r)))
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    
+    bool isPrime(int num){
+        if(num < 2){
+            return false;
+        }
+
+        for(int i = 2; i * i <= num; i++){
+            if(num % i == 0){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    int sumOfPrimesInRange(int n) {
+        
+        int k = n, reverse = 0;
+
+        while(k){
+            int rem = k % 10;
+            reverse = reverse * 10 + rem;
+            k /= 10;
+        }
+
+        int start = min(n, reverse);
+        int end = max(n, reverse);
+
+        int sum = 0;
+
+        for(int i = start; i <= end; i++){
+            if(isPrime(i)){
+                sum += i;
+            }
+        }
+
+        return sum;
+    }
+};
