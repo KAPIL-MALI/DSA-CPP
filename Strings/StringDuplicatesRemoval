@@ -1,0 +1,41 @@
+// Problem: String Duplicates Removal
+// Platform: GeeksforGeeks
+// Difficulty: Easy
+// Approach:
+// Use a frequency array to track visited uppercase and lowercase characters.
+// Add character to answer only if it appears for the first time.
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    string removeDuplicates(string &s) {
+        
+        vector<int> freq(52, 0);
+        
+        string ans = "";
+        
+        for(int i = 0; i < s.size(); i++){
+            
+            int index;
+            
+            if(s[i] >= 'A' && s[i] <= 'Z'){
+                index = s[i] - 'A';
+            }
+            else{
+                index = (s[i] - 'a') + 26;
+            }
+            
+            if(freq[index] == 0){
+                
+                freq[index] = 1;
+                ans.push_back(s[i]);
+            }
+        }
+        
+        return ans;
+    }
+};
