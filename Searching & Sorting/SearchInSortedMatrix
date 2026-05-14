@@ -1,0 +1,44 @@
+// Problem: Search in a Sorted Matrix
+// Platform: GeeksforGeeks
+// Difficulty: Medium
+// Approach:
+// Treat the 2D matrix as a flattened sorted array.
+// Apply binary search on indices and convert 1D index
+// back to 2D coordinates using division and modulus.
+// Time Complexity: O(log(n * m))
+// Space Complexity: O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    bool searchMatrix(vector<vector<int>> &mat, int x) {
+        
+        int row = mat.size();
+        int col = mat[0].size();
+        
+        int start = 0;
+        int end = row * col - 1;
+        
+        while(start <= end){
+            
+            int mid = start + (end - start) / 2;
+            
+            int midr = mid / col;
+            int midc = mid % col;
+            
+            if(mat[midr][midc] == x){
+                return true;
+            }
+            else if(mat[midr][midc] > x){
+                end = mid - 1;
+            }
+            else{
+                start = mid + 1;
+            }
+        }
+        
+        return false;
+    }
+};
